@@ -11,6 +11,12 @@ public class Cliente {
 
     private static Map<Integer, DtoCliente> listaClientes = new HashMap<>();
 
+    static{
+        listaClientes.put(1, new DtoCliente(1, "federico"));
+        listaClientes.put(2, new DtoCliente(2, "lorena"));
+        listaClientes.put(3, new DtoCliente(3, "marcela"));
+    }
+
     public static void crear(String message){
         Gson gson = new Gson();
         DtoCliente cliente = gson.fromJson(message, DtoCliente.class);
