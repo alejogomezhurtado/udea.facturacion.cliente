@@ -1,4 +1,4 @@
-package udea.facturacion.facturador.modelo;
+package udea.facturacion.cliente.modelo;
 
 public class DtoCliente {
 
