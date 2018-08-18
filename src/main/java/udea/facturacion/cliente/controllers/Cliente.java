@@ -25,7 +25,7 @@ public class Cliente {
 
     public static DtoCliente obtener(Integer id){
         DtoCliente cliente = listaClientes.get(id);
-        logger.info("Retorna cliente "+cliente);
+        logger.info("Retorna cliente \n{"+cliente.toString()+"}");
         return cliente;
     }
 
