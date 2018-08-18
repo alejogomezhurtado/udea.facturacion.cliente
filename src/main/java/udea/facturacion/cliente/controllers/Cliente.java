@@ -1,14 +1,15 @@
-package udea.facturacion.facturador.controllers;
+package udea.facturacion.cliente.controllers;
 
-import com.google.gson.Gson;
-import udea.facturacion.facturador.modelo.DtoCliente;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import udea.facturacion.cliente.modelo.DtoCliente;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Cliente {
-
+    private static final Logger logger = LogManager.getLogger(ClienteController.class);
     private static Map<Integer, DtoCliente> listaClientes = new HashMap<>();
 
     static{
@@ -17,18 +18,19 @@ public class Cliente {
         listaClientes.put(3, new DtoCliente(3, "marcela"));
     }
 
-    public static void crear(String message){
-        Gson gson = new Gson();
-        DtoCliente cliente = gson.fromJson(message, DtoCliente.class);
+    public static void crear(DtoCliente cliente){
         listaClientes.put(cliente.getIdCliente(), cliente);
-        System.out.println(cliente);
+        logger.info("Cliente Creado o modificado");
     }
 
     public static DtoCliente obtener(Integer id){
-        return listaClientes.get(id);
+        DtoCliente cliente = listaClientes.get(id);
+        logger.info("Retorna cliente "+cliente);
+        return cliente;
     }
 
     public static ArrayList<DtoCliente> lista(){
+        logger.info("Retorna "+listaClientes.size()+" clientes");
         return new ArrayList<DtoCliente>(listaClientes.values());
     }
 }
